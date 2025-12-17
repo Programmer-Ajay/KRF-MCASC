@@ -1,7 +1,8 @@
-import Image from "next/image";
 
+import HeroSection from "@/components/landing-page/hero-section";
 export default function Home() {
   return (
-    <div>Hello this KRF-2026</div>
+    <HeroSection/>
   );
 }
+
