@@ -1,0 +1,174 @@
+import { User, Mail, Building2, Calendar,PhoneIcon, Users, GraduationCap, PhoneForwarded, Phone } from "lucide-react";
+
+type Props={
+  namePrefix?:string,
+  getError:(fieldName:string)=>string[];
+  onClearError:(name:string)=>void
+}
+
+
+export default function CommonFields({namePrefix="",getError,onClearError}:Props) {
+
+  const fields = [
+    {
+      name: "fullName",
+      label: "Full Name",
+      placeholder: "Enter full name",
+      icon: User,
+      required: true,
+      type: "text"
+    },
+    {
+      name: "email",
+      label: "Email Address",
+      placeholder: "your.email@example.com",
+      icon: Mail,
+      required: true,
+      type: "email"
+    },
+    {
+      name: "mobileNo",
+      label: "Mobile No",
+      placeholder: "10-digit number",
+      icon: Phone,
+      required: true,
+      type: "tel"
+    },
+    {
+      name: "gender",
+      label: "Gender",
+      icon: Users, // Or a gender icon
+      required: true,
+      type: "select",
+      options: ["male", "female", "other"]
+    },
+    {
+      name: "guardianMobile",
+      label: "Guardian Mobile",
+      placeholder: "Parent's number (Optional)",
+      icon: PhoneForwarded,
+      required: false,
+      type: "tel"
+    },
+    {
+      name: "collegeName",
+      label: "College Name",
+      placeholder: "Enter college name",
+      icon: Building2,
+      required: true,
+      type: "text"
+    },
+    {
+      name: "courseName",
+      label: "Course",
+      placeholder: "e.g. BCA, B.Tech",
+      icon: GraduationCap,
+      required: true,
+      type: "text"
+    },
+    {
+      name: "class",
+      label: "Class / Year",
+      placeholder: "e.g. FY, SY, Final Year",
+      icon: Calendar,
+      required: true,
+      type: "text"
+    },
+    {
+      name: "category",
+      label: "Category",
+      icon: Users,
+      required: true,
+      type: "select",
+      options: ["ug", "pg", "junior college"] // Update based on your Enum
+    },
+  ];
+
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5">
+      {fields.map((field) => {
+        const Icon = field.icon;
+        const inputName=namePrefix?`${namePrefix}.${field.name}`:field.name
+        const error=getError(inputName)
+        const hasError=error.length>0
+        return (
+          <div key={inputName} className="relative group">
+            <label htmlFor={field.name} className="block text-xs sm:text-sm font-medium text-gray-200 mb-2">
+              {field.label}
+              {field.required && <span className="text-pink-500 ml-1">*</span>}
+            </label>
+
+            <div className="relative">
+              <Icon className="absolute left-3 top-2.5 sm:top-3.5 w-4 sm:w-5 h-4 sm:h-5 text-gray-400 pointer-events-none group-focus-within:text-pink-500 transition-colors" />
+
+               
+               {field.type === "select" ? (
+                <select
+                  id={inputName}
+                  name={inputName}
+                  onChange={() => onClearError(inputName)}
+                  required={field.required}
+                  className={`w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 bg-white/5 border rounded-lg sm:rounded-xl text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm appearance-none cursor-pointer
+                    ${hasError ? "border-red-500 focus:ring-red-500" : "border-white/10"}`}
+                >
+                  <option value="" className="bg-gray-900 text-gray-400">Select {field.label}</option>
+                  {field.options?.map((opt) => (
+                    <option key={opt} value={opt} className="bg-gray-900 text-white">
+                      {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  id={inputName}
+                  name={inputName}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  onChange={() => onClearError(inputName)}
+                  required={field.required}
+                  className={`w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 bg-white/5 border rounded-lg sm:rounded-xl text-white text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm
+                    ${hasError ? "border-red-500 focus:ring-red-500" : "border-white/10"}`}
+                />
+              )}
+
+              {/* Error Message */}
+              {hasError && (
+                <p className="mt-1 text-sm text-red-400">
+                  {error.join(", ")}
+                </p>
+              )}
+
+
+
+
+
+              {/* <input
+                id={inputName}
+                name={inputName}
+                type={field.type || "text"}
+                placeholder={field.placeholder}
+                onChange={()=>onClearError(inputName)}
+                required={field.required}
+                
+                className={`w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 bg-white/5 border border-white/10 rounded-lg sm:rounded-xl text-white text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm
+                 input ${error.length?"border-red-500 focus:ring-red-500" : ""}`}
+              />
+
+              {error.length > 0 && (
+           <p className="mt-1 text-sm text-red-400">
+           {error.join(", ")}
+            </p>
+            )} */} 
+
+
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-linear-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-focus-within:opacity-100 pointer-events-none transition-opacity -z-10 blur"></div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
