@@ -24,6 +24,7 @@ const EventRegisteration = () => {
           <p className="text-gray-400 mb-6">
             The event you're looking for doesn't exist or the link is broken.
           </p>
+          
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300"

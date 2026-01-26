@@ -101,7 +101,7 @@ export default function EventCard({ event ,variant }: EventcardProps) {
              : "bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md" // Cleaner look for coordinator
           }`}
         >
-          View List
+          View 
         </Link>
        
        {/* manage Events */}

@@ -10,7 +10,6 @@ import { competitions,
  import { eq,and } from "drizzle-orm"
  import z from "zod"
  import { eventRegistrationSchema } from "@/lib/validations/events-validations"
-import { PrimaryKey } from "drizzle-orm/gel-core"
 
 // first types of event registeration form
 //types
@@ -181,11 +180,18 @@ async function handleTeamRegistration(
     }).returning();
 
    // Add leader as first team member
+   try{
   await tx.insert(teamMembers).values({
     competitionId: competition.id,
     teamId: newTeam.id,
     participantId: leader.id,
   });
+}catch (error: any) {
+    if (error.code === '23505' || error.cause?.code==='23505') {
+       throw new Error("You (the leader) are already registered for this competition.");
+    }
+    throw error;
+  }
 
   // add the other team members 
   if(data.team?.teamMembers && data.team.teamMembers.length>0){
@@ -244,14 +250,22 @@ async function handleTeamRegistration(
           `${memberData.fullName} is already registered in another team for this competition.`
         );
       }
+          try{
       // add the team
       await tx.insert(teamMembers).values({
         competitionId: competition.id,
         teamId: newTeam.id,
         participantId: memberId,
       });
+    }catch(err:any){
+           if (err.code === "23505" || err.cause?.code==='23505') { // unique_violation
+    throw new Error(
+      `${memberData.fullName} is already registered in another team for this competition.`);
     }
+    throw err;
 
+    }
+  }
   }
 
   // create a registeration record
@@ -274,7 +288,11 @@ async function handleTeamRegistration(
         teamName:newTeam.teamName,
     }
    }
+
+  
 }
+
+
 
 
 // handle the solo registeration 

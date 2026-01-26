@@ -13,9 +13,10 @@ export const attendance = pgTable('attendance', {
   competitionId: uuid('competition_id')
     .notNull()
     .references(() => competitions.id, { onDelete: 'cascade' }), //  Added Cascade
-
+   //optional
   teamId: uuid('team_id').references(() => teams.id, { onDelete: 'cascade' }),
-  participantId: uuid('participant_id').references(() => participants.id, { onDelete: 'cascade' }),
+  // mandotory:Attendance is a physical
+  participantId: uuid('participant_id').notNull().references(() => participants.id, { onDelete: 'cascade' }),
 
   isPresent: boolean('is_present').notNull().default(false),
 
@@ -32,17 +33,10 @@ export const attendance = pgTable('attendance', {
 
   // 2. UNIQUENESS (Prevent duplicate attendance entries)
   // Logic: "For this competition, this Team can only have ONE attendance row."
-  competitionTeamUnique: unique('attendance_competition_team_unique')
-    .on(table.competitionId, table.teamId),
-    
+  
   competitionParticipantUnique: unique('attendance_competition_participant_unique')
     .on(table.competitionId, table.participantId),
 
-  // 3. LOGIC CHECK (Solo OR Team, never both)
-  attendanceCheck: check('attendance_logic_check', sql`
-    (${table.teamId} IS NOT NULL AND ${table.participantId} IS NULL) OR
-    (${table.teamId} IS NULL AND ${table.participantId} IS NOT NULL)
-  `),
 }));
 
 export const attendanceRelations = relations(attendance, ({ one }) => ({

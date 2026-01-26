@@ -7,7 +7,7 @@ import {
   MessageCircle,
   HelpCircle,
   Code,
- 
+ Brush
 } from "lucide-react";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
@@ -20,6 +20,7 @@ const iconMap = {
   quiz: HelpCircle,
   programming: Code,
   shortfilm: Award,
+  poster: Brush
 };
 
 const glowStyles = {
@@ -46,7 +47,8 @@ type Props = {
     | "debate"
     | "quiz"
     | "programming"
-    | "shortfilm" ;
+    | "shortfilm"
+    | "poster" ;
 };
 
 export default function EventCard({

@@ -66,6 +66,12 @@ const EventsSection = () => {
     color="purple"
     type="shortfilm"
   />
+   <EventCard
+    title="Poster-Making"
+    description="Insightful talks from industry experts and thought leaders."
+    color="cyan"
+    type="poster"
+  />
 </div>
 
 

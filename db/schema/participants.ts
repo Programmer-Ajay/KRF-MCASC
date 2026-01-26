@@ -7,6 +7,7 @@ import { genderEnum,participantsCategoryEnum } from './enums';
 import { profiles } from './profiles';
 import { teamMembers } from './team-members';
 import { registrations } from './registrations';
+import { attendance } from './attendance';
 export const participants = pgTable('participants', {
     id: uuid('id').primaryKey().defaultRandom(),
     profileId: uuid('profile_id').references(() => profiles.id, { onDelete: 'set null' }), // nullable
@@ -39,4 +40,7 @@ export const participantsRelations=relations(participants,({one,many})=>({
     }),
     registrations: many(registrations),
     teamMemberships:many(teamMembers),
+
+    // attendance for fetching the attendance
+    attendances:many(attendance),
 }))

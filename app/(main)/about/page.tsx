@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { Users, Award, Zap, Heart, Star } from "lucide-react";
 
@@ -34,17 +35,43 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
 
             {/* PHOTO CARD */}
-            <div className="flex justify-center">
-              <div className="relative p-0.5 rounded-2xl bg-linear-to-br from-cyan-400 via-pink-500 to-orange-400">
-                <div className="w-72 h-96 rounded-2xl bg-black/80 backdrop-blur-xl flex items-center justify-center">
-                  <div className="text-center text-gray-400">
-                    <Star className="w-14 h-14 mx-auto mb-4 text-cyan-400 opacity-80" />
-                    <p className="text-sm">Photo of Kartikya Rindani</p>
-                    <p className="text-xs opacity-60">(Add image here)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+<div className="flex justify-center">
+  <div className="relative">
+
+    {/* WHITE SHINY GLOW */}
+    <div className="
+      absolute inset-0
+      rounded-2xl
+      blur-2xl
+      bg-white/40
+      scale-110
+    " />
+
+    {/* COLORED GRADIENT FRAME */}
+    <div className="relative p-1 rounded-2xl bg-linear-to-br from-cyan-400 via-pink-500 to-orange-400">
+
+      {/* IMAGE CONTAINER */}
+      <div className="
+        relative
+        w-72 h-96
+        rounded-2xl
+        overflow-hidden
+        bg-black
+        shadow-[0_0_60px_rgba(255,255,255,0.35)]
+      ">
+        <Image
+          src="/images/Kartikya.jpg"
+          alt="Kartikya Rindani"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
             {/* STORY CARDS */}
             <div className="space-y-6">
@@ -80,12 +107,10 @@ export default function AboutPage() {
   hover:shadow-[0_0_30px_rgba(236,72,153,0.25)]
 ">
   <h3 className="text-xl font-semibold mb-3">
-    A Father’s Love
+    A Family’s Love That Lives On
   </h3>
   <p className="text-gray-400 leading-relaxed">
-    In honor of Kartikya’s memory, his father established this annual
-    fest to celebrate young dreams. Through this event, scholarships
-    are provided to deserving students, ensuring his legacy lives on.
+    Founded by Kartikya’s parents in his loving memory, this annual fest celebrates hope, ambition, and young dreams. Through scholarships for deserving students, his legacy continues to inspire.
   </p>
 </div>
 
@@ -123,10 +148,18 @@ export default function AboutPage() {
             performers from across the region.
           </p>
 
-          <p className="text-gray-400 max-w-3xl mb-12">
-            From coding battles to dance performances, debates to music —
-            we celebrate excellence in every form over three unforgettable days.
-          </p>
+          <p className="text-gray-400 text-lg max-w-3xl leading-relaxed mb-12">
+  From intense coding battles to mesmerizing dance performances, from
+  thought-provoking debates to soulful singing competitions – we celebrate
+  excellence in every form. Win exciting{" "}
+  <span className="text-cyan-400 font-semibold">medals</span>{" "}
+  and receive{" "}
+  <span className="text-cyan-400 font-semibold">e-certificates</span>{" "}
+  for your achievements! Join us for three unforgettable days of learning,
+  competition, and celebration.
+</p>
+
+
 
           {/* STATS */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -174,8 +207,10 @@ export default function AboutPage() {
 
             <p className="text-gray-400 mb-8">
               Every year, deserving students receive scholarships in Kartikya’s
-              memory — helping them pursue dreams and continue education.
+              memory — helping them pursue dreams and continue education.<br /><br />
+              This scholarship is awarded exclusively to students of Modern College of Arts, Science and Commerce (Autonomous), Shivajinagar ,Pune-411005.
             </p>
+            
 
             <div className="flex justify-center gap-6 flex-wrap">
               <div className="px-6 py-3 bg-black/60 rounded-full border border-white/10">

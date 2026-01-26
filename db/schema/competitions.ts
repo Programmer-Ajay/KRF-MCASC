@@ -18,6 +18,11 @@ export const competitions =  pgTable('competitions',{
   status: competitionStatusEnum('status').notNull().default('open'),
   coordinatorId:uuid('coordinator_id').notNull().references(()=>profiles.id,{onDelete:'restrict'}),
  coordinatorContactNumber: text('coordinator_contact_number').notNull(),
+  // lock for attendane and certificate
+
+  isResultDeclacred: boolean('is_result_declared').notNull().default(false),
+  areCertificatesIssued: boolean('are_certificates_issued').notNull().default(false),
+
   coordinatorContactHours: text('coordinator_contact_hours'),
 
   registrationDeadline: timestamp('registration_deadline', { withTimezone: true }).notNull(),

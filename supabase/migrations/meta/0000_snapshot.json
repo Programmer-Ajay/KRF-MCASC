@@ -1,5 +1,5 @@
 {
-  "id": "39e9be54-d388-41cf-a346-3d302afe17ac",
+  "id": "ba975e93-4224-4ea7-bd19-bbf967f3326f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -191,6 +191,20 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "is_result_declared": {
+          "name": "is_result_declared",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "are_certificates_issued": {
+          "name": "are_certificates_issued",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         },
         "coordinator_contact_hours": {
           "name": "coordinator_contact_hours",
@@ -920,7 +934,7 @@
           "name": "participant_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "is_present": {
           "name": "is_present",
@@ -1046,14 +1060,6 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "attendance_competition_team_unique": {
-          "name": "attendance_competition_team_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "competition_id",
-            "team_id"
-          ]
-        },
         "attendance_competition_participant_unique": {
           "name": "attendance_competition_participant_unique",
           "nullsNotDistinct": false,
@@ -1064,12 +1070,7 @@
         }
       },
       "policies": {},
-      "checkConstraints": {
-        "attendance_logic_check": {
-          "name": "attendance_logic_check",
-          "value": "\n    (\"attendance\".\"team_id\" IS NOT NULL AND \"attendance\".\"participant_id\" IS NULL) OR\n    (\"attendance\".\"team_id\" IS NULL AND \"attendance\".\"participant_id\" IS NOT NULL)\n  "
-        }
-      },
+      "checkConstraints": {},
       "isRLSEnabled": false
     },
     "public.results": {
@@ -1230,7 +1231,7 @@
           "name": "participant_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "certificate_type": {
           "name": "certificate_type",
@@ -1349,24 +1350,10 @@
             "participant_id",
             "certificate_type"
           ]
-        },
-        "unique_team_cert": {
-          "name": "unique_team_cert",
-          "nullsNotDistinct": false,
-          "columns": [
-            "competition_id",
-            "team_id",
-            "certificate_type"
-          ]
         }
       },
       "policies": {},
-      "checkConstraints": {
-        "certificates_logic_check": {
-          "name": "certificates_logic_check",
-          "value": "\n    (\"certificates\".\"team_id\" IS NOT NULL AND \"certificates\".\"participant_id\" IS NULL) OR\n    (\"certificates\".\"team_id\" IS NULL AND \"certificates\".\"participant_id\" IS NOT NULL)\n  "
-        }
-      },
+      "checkConstraints": {},
       "isRLSEnabled": false
     },
     "public.gallery": {

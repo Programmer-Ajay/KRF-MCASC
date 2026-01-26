@@ -6,7 +6,9 @@ export async function EventCardSection({coordinatorId}:{coordinatorId:string}){
   noStore();
 
   // this component pasuse but the rest page keep displaying
-  const events=await getCoordinatorEventCards(coordinatorId);
+  const res=await getCoordinatorEventCards(coordinatorId);
+  const events=res.success && res.data? res.data:[];
+
     
   // render the grid once the data arrives
    return < EventGrid events={events} role ="coordinator"/>

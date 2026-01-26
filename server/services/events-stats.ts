@@ -1,10 +1,22 @@
 import { db } from "@/db";
+import { ApiResponse } from "@/types/api-response";
+import { success,handleError } from "@/lib/error-and-res/response";
 import { competitions } from "@/db/schema";
 
-export async function getEventStats(){
-    // fetech all the events and their participants
 
-    const allEvents=await db.query.competitions.findMany({
+// 1. Define the Shape
+type Stats = {
+  totalEvents: number;
+  totalRegistrations: number;
+  soloRegistrations: number;
+  teamRegistrations: number;
+};
+export async function getEventStats():Promise<ApiResponse<Stats>>{
+    // fetech all the events and their participants
+  
+    try {
+        
+        const allEvents=await db.query.competitions.findMany({
         with:{
             registrations:true,
         },
@@ -36,6 +48,13 @@ export async function getEventStats(){
             }
         }
     }
-    return stats;
+    return  success("Events Stats fetched succussfully",stats);
+
+    } catch (error) {
+        console.log("Global stats::",error);
+        return handleError <Stats>(error);
+    }
+
+   
 
 }

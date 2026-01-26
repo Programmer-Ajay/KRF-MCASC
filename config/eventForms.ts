@@ -17,26 +17,26 @@ export const EVENT_FORMS = {
     isTeam: true,
     description: "Engage in intellectual discourse and win exciting prizes",
     fields: [
-      {
-        name: "topic",
-        label: "Preferred Debate Topic",
-        type: "select",
-        options: [
-          "Artificial Intelligence Impact on Society",
-          "Climate Change Solutions",
-          "Future of Education",
-          "Technology vs. Humanity",
-          "Other",
-        ],
-        required: true,
-      },
-      {
-        name: "standpoint",
-        label: "Your Standpoint",
-        type: "select",
-        options: ["For", "Against",],
-        required: true,
-      },
+      // {
+      //   name: "topic",
+      //   label: "Preferred Debate Topic",
+      //   type: "select",
+      //   options: [
+      //     "Artificial Intelligence Impact on Society",
+      //     "Climate Change Solutions",
+      //     "Future of Education",
+      //     "Technology vs. Humanity",
+      //     "Other",
+      //   ],
+      //   required: true,
+      // },
+      // {
+      //   name: "standpoint",
+      //   label: "Your Standpoint",
+      //   type: "select",
+      //   options: ["For", "Against",],
+      //   required: true,
+      // },
     ],
   },
 
@@ -44,13 +44,13 @@ export const EVENT_FORMS = {
     isTeam: false,
     description: "Showcase your coding skills and problem-solving abilities",
     fields: [
-      {
-        name: "language",
-        label: "Primary Programming Language",
-        type: "select",
-        options: ["C++", "Java", "Python", "JavaScript", "C#", "Other"],
-        required: true,
-      },
+      // {
+      //   name: "language",
+      //   label: "Primary Programming Language",
+      //   type: "select",
+      //   options: ["C++", "Java", "Python", "JavaScript", "C#", "Other"],
+      //   required: true,
+      // },
    
     ],
   },
@@ -64,7 +64,7 @@ export const EVENT_FORMS = {
         label: "Film Link (YouTube/Vimeo)",
         type: "url",
         placeholder: "https://youtube.com/watch?v=...",
-        required: true,
+        required: false,
       },
       {
         name: "duration",
@@ -90,7 +90,7 @@ export const EVENT_FORMS = {
       {
         name: "synopsis",
         label: "Brief Synopsis",
-        type: "text",
+        type: "textarea",
         placeholder: "Describe your film in 2-3 sentences",
         required: true,
       },
@@ -117,9 +117,9 @@ export const EVENT_FORMS = {
       {
         name: "projectDescription",
         label: "Project Description",
-        type: "text",
+        type: "textarea",
         placeholder: "Briefly describe your project and its key features",
-        required: true,
+        required: false,
       },
       {
         name: "technology",
@@ -144,5 +144,10 @@ export const EVENT_FORMS = {
         required: false,
       },
     ],
+  },
+  poster: {
+    isTeam: false,
+    description: "Express yourself in the form of Arts-skill" ,
+    fields: [],
   },
 } as const;

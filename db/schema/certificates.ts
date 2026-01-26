@@ -14,9 +14,10 @@ export const certificates = pgTable('certificates', {
   competitionId: uuid('competition_id')
     .notNull()
     .references(() => competitions.id,{onDelete:'cascade'}),
-
+ // optional:used so team leader can find this certificate
   teamId: uuid('team_id').references(() => teams.id,{onDelete:'cascade'}),
-  participantId: uuid('participant_id').references(() => participants.id,{onDelete:'cascade'}),
+  // mandotory:the human who owns this certificate
+  participantId: uuid('participant_id').notNull().references(() => participants.id,{onDelete:'cascade'}),
 
   certificateType: certificateTypeEnum('certificate_type').notNull(),
 
@@ -33,18 +34,10 @@ export const certificates = pgTable('certificates', {
 
 // 
 // 2. UNIQUENESS (Prevent duplicate issuance)
-  // A person can only get ONE "Winner" cert and ONE "Participation" cert per event.
+  // A person can only get ONE "Winner" certificate and ONE "Participation" cert per event.
   uniqueParticipantCert: unique('unique_participant_cert')
     .on(table.competitionId, table.participantId, table.certificateType),
 
-  uniqueTeamCert: unique('unique_team_cert')
-    .on(table.competitionId, table.teamId, table.certificateType),
-
-
-  certificatesCheck: check('certificates_logic_check', sql`
-    (${table.teamId} IS NOT NULL AND ${table.participantId} IS NULL) OR
-    (${table.teamId} IS NULL AND ${table.participantId} IS NOT NULL)
-  `),
 }));
 
 export const certificatesRelations = relations(certificates, ({ one }) => ({

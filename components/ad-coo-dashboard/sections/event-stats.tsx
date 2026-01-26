@@ -1,10 +1,17 @@
 import { getEventStats } from "@/server/services/events-stats";
 import StatsCards from "../stats-card";
+import { unstable_noStore as noStore } from "next/cache";
 
+const DEFAULT_STATS = {
+  totalEvents: 0,
+  totalRegistrations: 0,
+  soloRegistrations: 0,
+  teamRegistrations: 0,
+};
 export async function StatsSection(){
-
-    const stats=await getEventStats();
-
+     noStore()
+    const res=await getEventStats();
+   const  stats = res.success && res.data? res.data:DEFAULT_STATS
     return <StatsCards stats={stats}/>
 
 }

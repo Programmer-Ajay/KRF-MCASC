@@ -1,70 +1,68 @@
-// import { getEventMeta,getSoloParticipants,getTeamParticipants } from "@/lib/supabase/admin-queries/participants-queries";
 
-// import SoloTable from "@/components/ad-coo-dashboard/solo-table";
-// import TeamList from "@/components/ad-coo-dashboard/team-list";
+import { getEventParticipants } from "@/server/services/participants-list";
+import { ParticipantsList } from "@/components/ad-coo-dashboard/participants-list";
+import Link from "next/link";
+import { ArrowLeft, Sparkles } from "lucide-react";
 
+export default async function Page({ params }: { params: { eventId: string } }) {
+  const { eventId } = await params;
 
-// type Props = {
-//   params: { eventId: string };
-// };
+  // 1. Fetch Data
+  const response = await getEventParticipants(eventId);
+  const participants = response.success && response.data ? response.data : [];
 
-// export default async function ParticipantsPage({ params }: Props) {
-//     const {eventId} = await params;
-//   const event = await getEventMeta(eventId);
+  return (
+    <div className="min-h-screen relative pt-24 pb-12 px-4 sm:px-6 bg-black text-white">
+      
+      {/* --- BACKGROUND FX (Matching Dashboard) --- */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full mix-blend-screen filter blur-[100px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size[24px_24px]"></div>
+      </div>
 
-//   if (!event) {
-//     return <p>Event not found</p>;
-//   }
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* 2. Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <Link 
+              href="/coordinator"
+              className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/50 hover:text-purple-400 transition-all duration-300 group"
+            >
+              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            </Link>
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-black text-white flex items-center gap-3">
+                Registrations
+                <Sparkles size={24} className="text-purple-500 animate-pulse hidden sm:block" />
+              </h1>
+              <p className="text-gray-400 text-sm font-medium mt-1">
+                 Manage participants for this event
+              </p>
+            </div>
+          </div>
 
-//   if (event.mode === "solo") {
-//     const participants = await getSoloParticipants(eventId);
-//     return (
-//       <section className="min-h-screen relative mt-20 px-4 sm:px-6 lg:px-8 overflow-hidden py-8 sm:py-12">
-//         {/* Background */}
-//         <div className="fixed inset-0 -z-10">
-//           <div className="absolute inset-0 bg-black" />
-//           <div className="absolute top-0 left-0 w-96 h-96 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-//           <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-//           <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
-//           <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black" />
-//         </div>
+          {/* Counter Badge */}
+          <div className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+             <div className="text-right">
+                <p className="text-xs text-gray-400 uppercase tracking-wider font-bold">Total Count</p>
+                <p className="text-2xl font-black bg-linear-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                  {participants.length.toString().padStart(2, '0')}
+                </p>
+             </div>
+          </div>
+        </div>
 
-//         <div className="max-w-7xl mx-auto relative z-10">
-//           {/* Header */}
-//           <div className="mb-8">
-//             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent mb-2">
-//               {event.name}
-//             </h1>
-//             <p className="text-sm sm:text-base text-gray-400">Solo Participants ({participants.length})</p>
-//           </div>
-//           <SoloTable participants={participants} />
-//         </div>
-//       </section>
-//     );
-//   }
+        {/* 3. The List UI */}
+        <div className="relative">
+           {/* Decorative top border gradient */}
+           <div className="absolute -top-px left-0 right-0 h-px bg-linear-to-r from-transparent via-purple-500/50 to-transparent"></div>
+           
+           <ParticipantsList data={participants} eventId={eventId} />
+        </div>
 
-//   const teams = await getTeamParticipants(eventId);
-//   return (
-//     <section className="min-h-screen relative mt-20 px-4 sm:px-6 lg:px-8 overflow-hidden py-8 sm:py-12">
-//       {/* Background */}
-//       <div className="fixed inset-0 -z-10">
-//         <div className="absolute inset-0 bg-black" />
-//         <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-//         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-//         <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
-//         <div className="absolute inset-0 bg-linear-to-b from-transparent via-black/50 to-black" />
-//       </div>
-
-//       <div className="max-w-7xl mx-auto relative z-10">
-//         {/* Header */}
-//         <div className="mb-8">
-//           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent mb-2">
-//             {event.name}
-//           </h1>
-//           <p className="text-sm sm:text-base text-gray-400">Teams ({teams.length})</p>
-//         </div>
-//         <TeamList teams={teams} />
-//       </div>
-//     </section>
-//   );
-// }
+      </div>
+    </div>
+  );
+}
