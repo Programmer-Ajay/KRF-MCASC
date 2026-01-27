@@ -48,7 +48,7 @@ export const EVENT_FORMS = {
         name: "language",
         label: "Primary Programming Language",
         type: "select",
-        options: ["C++","C"],
+        options: ["C"],
         required: true,
       },
    

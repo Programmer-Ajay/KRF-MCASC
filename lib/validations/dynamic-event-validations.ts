@@ -20,23 +20,23 @@ const seminarDynamicSchema = z.object({
   topic: createRequiredString("Topic of Interest"),
 });
 
-const debateDynamicSchema = z.object({
-  topic: z.enum([
-    "Artificial Intelligence Impact on Society",
-    "Climate Change Solutions",
-    "Future of Education",
-    "Technology vs. Humanity",
-    "Other"
-  ] as const, {
-    message: "Please select a valid debate topic"
-  }),
-  standpoint: z.enum(["For", "Against"] as const, {
-    message: "Please select your standpoint (For or Against)"
-  }),
-});
+// const debateDynamicSchema = z.object({
+//   topic: z.enum([
+//     "Artificial Intelligence Impact on Society",
+//     "Climate Change Solutions",
+//     "Future of Education",
+//     "Technology vs. Humanity",
+//     "Other"
+//   ] as const, {
+//     message: "Please select a valid debate topic"
+//   }),
+//   standpoint: z.enum(["For", "Against"] as const, {
+//     message: "Please select your standpoint (For or Against)"
+//   }),
+// });
 
 const programmingDynamicSchema = z.object({
-  language: z.enum(["C++", "Java", "Python", "JavaScript", "C#", "Other"] as const, {
+  language: z.enum(["C"] as const, {
     message: "Please select a programming language"
   }),
 });
@@ -55,10 +55,12 @@ const shortfilmDynamicSchema = z.object({
   
   synopsis: z.string()
     .min(10, { message: "Synopsis must be at least 10 characters long" })
-    .max(500, { message: "Synopsis cannot exceed 500 characters" }),
+    .max(500, { message: "Synopsis cannot exceed 500 characters" })
+    .optional(),
 });
 
 const quizDynamicSchema = z.object({});
+const debateDynamicSchema=z.object({})
 
 const projectDynamicSchema = z.object({
   projectTitle: createRequiredString("Project Title"),
@@ -87,4 +89,5 @@ export const eventDynamicSchemas = {
   project: projectDynamicSchema,
 } as const;
 
-export type EventFormData = z.infer<typeof seminarDynamicSchema | typeof debateDynamicSchema | typeof programmingDynamicSchema | typeof shortfilmDynamicSchema | typeof quizDynamicSchema | typeof projectDynamicSchema>;
+export type EventFormData = z.infer<typeof seminarDynamicSchema  | 
+typeof debateDynamicSchema|typeof programmingDynamicSchema | typeof shortfilmDynamicSchema | typeof quizDynamicSchema | typeof projectDynamicSchema>;
