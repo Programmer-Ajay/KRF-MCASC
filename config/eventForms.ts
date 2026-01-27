@@ -44,16 +44,16 @@ export const EVENT_FORMS = {
     isTeam: false,
     description: "Showcase your coding skills and problem-solving abilities",
     fields: [
-      // {
-      //   name: "language",
-      //   label: "Primary Programming Language",
-      //   type: "select",
-      //   options: ["C++", "Java", "Python", "JavaScript", "C#", "Other"],
-      //   required: true,
-      // },
+      {
+        name: "language",
+        label: "Primary Programming Language",
+        type: "select",
+        options: ["C++","C"],
+        required: true,
+      },
    
     ],
-  },
+  },git
 
   shortfilm: {
     isTeam: true,
