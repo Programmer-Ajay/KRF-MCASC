@@ -1,16 +1,20 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { EVENT_FORMS } from "@/config/eventForms";
 import EventForm from "@/components/events-registeration/EventForm";
 import { motion } from "framer-motion";
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { GlobalLoader } from "@/components/ui/loader"; // Optional: Use your existing loader if available
 
-const EventRegisteration = () => {
+//  LOGIC COMPONENT (Handles Search Params & UI)
+const EventRegistrationContent = () => {
   const searchParams = useSearchParams();
   const eventType = searchParams.get("event");
 
+  // Validate Event Type
   if (!eventType || !(eventType in EVENT_FORMS)) {
     return (
       <motion.div
@@ -39,31 +43,20 @@ const EventRegisteration = () => {
 
   const eventConfig = EVENT_FORMS[eventType as keyof typeof EVENT_FORMS];
 
-
   return (
     <main className="relative min-h-screen bg-black py-12 sm:py-20 px-4 sm:px-0">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-          }}
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity }}
           className="absolute top-10 left-10 w-40 sm:w-72 h-40 sm:h-72 bg-pink-500/10 rounded-full blur-3xl"
-        ></motion.div>
+        />
         <motion.div
-          animate={{
-            y: [0, 20, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-          }}
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
           className="absolute bottom-10 right-10 w-40 sm:w-96 h-40 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"
-        ></motion.div>
+        />
       </div>
 
       {/* Header */}
@@ -109,15 +102,21 @@ const EventRegisteration = () => {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mt-8 sm:mt-12 max-w-3xl mx-auto px-2 sm:px-4"
       >
-        {/* <div className="bg-linear-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-4 sm:p-6 text-center text-gray-300">
-          <p className="text-xs sm:text-sm md:text-base">
-            <strong>Note:</strong> You will receive a confirmation email with all the details. 
-            Make sure to check your spam folder if you don't see it in your inbox.
-          </p>
-        </div> */}
       </motion.div>
     </main>
   );
 };
 
-export default EventRegisteration;
+//  MAIN EXPORT (Wraps Logic in Suspense)
+export default function EventRegistrationPage() {
+  return (
+    <Suspense fallback={
+      
+      <GlobalLoader show={true} message="Loading Registration..." />
+      
+        
+    }>
+      <EventRegistrationContent />
+    </Suspense>
+  );
+}

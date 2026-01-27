@@ -6,7 +6,7 @@ import { getExportData ,type ExportRegistrationData } from "@/server/services/ex
 // this is a route handler
 export async function GET(
     req:NextRequest,
-    {params}:{params:{eventId:string}}
+    { params }: { params: Promise<{ eventId: string }> }
 ){
     try{
           

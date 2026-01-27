@@ -23,7 +23,7 @@ export default function AboutPage() {
 
             <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
               <span className="bg-linear-to-r from-cyan-400 via-pink-500 to-orange-400 bg-clip-text text-transparent">
-                Kartikya Rindani
+                Kartikeya Rindani
               </span>
             </h1>
 
@@ -89,7 +89,7 @@ export default function AboutPage() {
     A Life Full of Dreams
   </h3>
   <p className="text-gray-400 leading-relaxed">
-    Kartikya Rindani was a bright and passionate student, filled with
+    Kartikeya Rindani was a bright and passionate student, filled with
     dreams and aspirations that touched everyone around him. Though
     his journey was cut short, his enthusiasm, creativity, and
     kindness continue to inspire us all.
@@ -110,7 +110,7 @@ export default function AboutPage() {
     A Family’s Love That Lives On
   </h3>
   <p className="text-gray-400 leading-relaxed">
-    Founded by Kartikya’s parents in his loving memory, this annual fest celebrates hope, ambition, and young dreams. Through scholarships for deserving students, his legacy continues to inspire.
+    Founded by Kartikeya’s parents in his loving memory, this annual fest celebrates hope, ambition, and young dreams. Through scholarships for deserving students, his legacy continues to inspire.
   </p>
 </div>
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
                   “Dreams don’t die, they live on through those who remember them.”
                 </p>
                 <p className="text-cyan-400 text-sm mt-2">
-                  — In memory of Kartikya
+                  — In memory of Kartikeya
                 </p>
               </div>
 
@@ -143,7 +143,7 @@ export default function AboutPage() {
           </h2>
 
           <p className="text-gray-400 text-lg max-w-3xl mb-6">
-            Kartikya Rindani Fest is the flagship annual cultural and technical
+            Kartikeya Rindani Fest is the flagship annual cultural and technical
             extravaganza bringing together the brightest minds and most talented
             performers from across the region.
           </p>
@@ -201,7 +201,7 @@ export default function AboutPage() {
 
             <h3 className="text-3xl font-bold mb-4">
               <span className="bg-linear-to-r from-cyan-400 to-pink-500 bg-clip-text text-transparent">
-                Kartikya Rindani Scholarship
+                Kartikeya Rindani Scholarship
               </span>
             </h3>
 
