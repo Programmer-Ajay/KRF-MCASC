@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-xl font-semibold text-cyan-400">
-              Kartikya Rindani Fest
+              Kartikeya Rindani Fest
             </h2>
             <p className="mt-4 text-sm leading-relaxed">
               The ultimate celebration of talent, creativity, and innovation.
@@ -57,7 +57,7 @@ export default function Footer() {
               College Leadership
             </h3>  {/*Principal and HOD names */}
             <p className="text-cyan-400 text-sm font-medium">Principal</p>
-            <p className="text-sm mb-3">Ms. Nivedita Ekbote</p>
+            <p className="text-sm mb-3">Prof.Dr.Nivedita G. Ekbote</p>
 
             <p className="text-cyan-400 text-sm font-medium">
               HOD – Computer Science
@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 text-center text-xs text-gray-500">
-          © 2025 Kartikya Rindani Fest | Modern College of Arts, Science and
+          © 2025 Kartikeya Rindani Fest | Modern College of Arts, Science and
           Commerce (Autonomous), Shivajinagar ,Pune-411005.
         </div>
       </div>
