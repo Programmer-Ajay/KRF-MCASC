@@ -53,7 +53,7 @@ export const EVENT_FORMS = {
       },
    
     ],
-  },git
+  },
 
   shortfilm: {
     isTeam: true,
