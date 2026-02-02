@@ -142,7 +142,7 @@ export function UserProfilePopup({
             {isRegularUser && (
                 <div className="space-y-2">
                     <Link
-                        href="/dashboard"
+                        href="/"
                         onClick={() => { onClose(); setIsLoading(true); }}
                         className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-all group"
                     >
@@ -150,7 +150,7 @@ export function UserProfilePopup({
                         My Registrations
                     </Link>
 
-                    {/* 👇 Integrated Component */}
+                    {/*  Integrated Component */}
                     <MyCertificatesDialog>
                          <button 
                             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-all group text-left"

@@ -7,12 +7,13 @@ import EventForm from "@/components/events-registeration/EventForm";
 import { motion } from "framer-motion";
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { GlobalLoader } from "@/components/ui/loader"; // Optional: Use your existing loader if available
+import { GlobalLoader } from "@/components/ui/loader";
 
 //  LOGIC COMPONENT (Handles Search Params & UI)
 const EventRegistrationContent = () => {
   const searchParams = useSearchParams();
   const eventType = searchParams.get("event");
+  console.log("EventType:",eventType)
 
   // Validate Event Type
   if (!eventType || !(eventType in EVENT_FORMS)) {

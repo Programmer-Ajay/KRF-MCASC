@@ -42,9 +42,7 @@ const programmingDynamicSchema = z.object({
 });
 
 const shortfilmDynamicSchema = z.object({
-  filmLink: z.string()
-    .url({ message: "Link must be a valid URL (starting with http/https)" }),
-  
+  filmLink:optionalUrlSchema,
   duration: z.coerce.number()
     .min(1, { message: "Film duration must be at least 1 minute" })
     .max(60, { message: "Film duration cannot exceed 60 minutes" }),
@@ -53,10 +51,10 @@ const shortfilmDynamicSchema = z.object({
     message: "Please select a film genre"
   }),
   
-  synopsis: z.string()
-    .min(10, { message: "Synopsis must be at least 10 characters long" })
-    .max(500, { message: "Synopsis cannot exceed 500 characters" })
-    .optional(),
+  // synopsis: z.string()
+  //   .min(10, { message: "Synopsis must be at least 10 characters long" })
+  //   .max(500, { message: "Synopsis cannot exceed 500 characters" })
+  //   .optional(),
 });
 
 const quizDynamicSchema = z.object({});
@@ -65,7 +63,7 @@ const debateDynamicSchema=z.object({})
 const projectDynamicSchema = z.object({
   projectTitle: createRequiredString("Project Title"),
   projectDescription: createRequiredString("Project Description")
-    .min(20, { message: "Please provide a more detailed description (min 20 chars)" }),
+    .min(20, { message: "Please provide a more detailed description (min 20 chars)" }).or(z.literal("")).optional(),
   
   technology: z.union([
     z.array(z.string().min(1)).min(1, { message: "At least one technology is required" }),

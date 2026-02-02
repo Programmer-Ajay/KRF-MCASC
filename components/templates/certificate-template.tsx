@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer';
 
+
 export interface PdfCertificateData {
   id: string;
   recipientName: string;
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
     left: 0,
     width: '100%',
     height: '100%',
+    color:'#000',
+     fontFamily: 'Helvetica-Bold',
   },
 
   // --- 1. RECIPIENT NAME ---
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nameText: {
-    fontSize: 20,       // Reduced size for better look
+    fontSize: 18.2,       // Reduced size for better look
     fontFamily: 'Helvetica-Bold',
     color: '#000',
     textTransform: 'uppercase',
@@ -68,8 +71,10 @@ const styles = StyleSheet.create({
   // Class Section
   classSection: {
     position: 'absolute',
-    left: '18%',      
-    width: '24%',     
+    top: '51.2%',
+    left: '15%',      
+    width: '70%',
+    // border:'1px solid red',  for testing     
     textAlign: 'center',
     justifyContent: 'center',
   },
@@ -77,16 +82,18 @@ const styles = StyleSheet.create({
   // College Section
   collegeSection: {
     position: 'absolute',
-    left: '47%',       
-    width: '38%',     
+     top: '57%',
+    left: '7.5%',       
+    width: '90%',     
     textAlign: 'center',
     justifyContent: 'center',
+   
   },
 
   detailText: {
-    fontSize: 19,      // Increased size for readability
+    fontSize: 17.5,      // Increased size for readability
     fontFamily: 'Helvetica-Bold',
-    color: '#1a1a1a',
+    color: '#000',
     textTransform:'capitalize',
     textOverflow:'ellipsis',
     maxLines:1
@@ -96,14 +103,14 @@ const styles = StyleSheet.create({
   // --- 3. EVENT NAME ---
   eventSection: {
     position: 'absolute',
-    top: '58.1%',      
-    left: '26%',
-    width: '50%',      
+    top: '63.1%',      
+    left: '24%',
+    width: '60%',      
     textAlign: 'center',
     justifyContent: 'center',
   },
   eventText: {
-    fontSize: 19,     
+    fontSize: 18.2,     
     fontFamily: 'Helvetica-Bold',
     color: '#000',
     textTransform:'capitalize'
@@ -112,14 +119,14 @@ const styles = StyleSheet.create({
   // --- 4. RANK / POSITION ---
   rankSection: {
     position: 'absolute',
-    top: '65.2%',        
+    top: '69%',        
     left: '35%', 
     width: '30%',
     textAlign: 'center',
     justifyContent: 'center',
   },
   rankText: {
-    fontSize: 19,
+    fontSize: 18.2,
     fontFamily: 'Helvetica-Bold',
     color: '#000', 
     textTransform: 'uppercase',
@@ -127,7 +134,7 @@ const styles = StyleSheet.create({
 });
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-const imageUrl = `${baseUrl}/images/certificate-bg.jpeg`;
+const imageUrl = `${baseUrl}/images/certificate-bg1.jpeg`;
 
 export const CertificateDocument = ({ certificates }: { certificates: PdfCertificateData[] }) => (
   <Document>
@@ -148,18 +155,20 @@ export const CertificateDocument = ({ certificates }: { certificates: PdfCertifi
             </View>
 
             {/* 2. Class & College */}
-            <View style={styles.detailsRow}>
+            {/* <View style={styles.detailsRow}> */}
                 <View style={styles.classSection}>
                     <Text style={styles.detailText} >
                         {cert.classAndCourse}
                     </Text>
                 </View>
+
+
                 <View style={styles.collegeSection}>
                     <Text style={styles.detailText} >
                         {cert.collegeName}
                     </Text>
                 </View>
-            </View>
+            {/* </View> */}
 
             {/* 3. Event */}
             <View style={styles.eventSection}>

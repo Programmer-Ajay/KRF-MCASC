@@ -1,4 +1,6 @@
-import { User, Mail, Building2, Calendar,PhoneIcon, Users, GraduationCap, PhoneForwarded, Phone } from "lucide-react";
+import { User, Mail, Building2, Calendar,PhoneIcon, Users, GraduationCap, RotateCcw, PhoneForwarded, Phone } from "lucide-react";
+import { COLLEGES } from "@/config/college";
+import { useState } from "react";
 
 type Props={
   namePrefix?:string,
@@ -8,6 +10,9 @@ type Props={
 
 
 export default function CommonFields({namePrefix="",getError,onClearError}:Props) {
+
+  // state to track the if user wants to select the college name is manually 
+  const [isManualCollege,setIsManualCollege]=useState(false)
 
   const fields = [
     {
@@ -56,7 +61,8 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
       placeholder: "Enter college name",
       icon: Building2,
       required: true,
-      type: "text"
+      type: isManualCollege? "text" :"select",
+      options:isManualCollege? null :[...COLLEGES,"Other"]
     },
     {
       name: "courseName",
@@ -93,12 +99,23 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
         const error=getError(inputName)
         const hasError=error.length>0
         return (
-          <div key={inputName} className="relative group">
+          <div key={inputName} className="relative group"> 
+          <div className=" flex gap-9"> 
             <label htmlFor={field.name} className="block text-xs sm:text-sm font-medium text-gray-200 mb-2">
               {field.label}
               {field.required && <span className="text-pink-500 ml-1">*</span>}
             </label>
 
+            {field.name==="collegeName" && isManualCollege &&(
+              <button
+                        type="button"
+                        onClick={() => setIsManualCollege(false)}
+                        className="text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1 mb-2"
+                    >
+                        <RotateCcw size={12} /> Select from List
+                    </button>
+            )}
+             </div>
             <div className="relative">
               <Icon className="absolute left-3 top-2.5 sm:top-3.5 w-4 sm:w-5 h-4 sm:h-5 text-gray-400 pointer-events-none group-focus-within:text-pink-500 transition-colors" />
 
@@ -107,7 +124,13 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
                 <select
                   id={inputName}
                   name={inputName}
-                  onChange={() => onClearError(inputName)}
+                  onChange={(e) =>{ 
+                    onClearError(inputName);
+                    if(field.name==="collegeName" && e.target.value==="Other"){
+                      setIsManualCollege(true);
+                    }
+                  }}
+
                   required={field.required}
                   className={`w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 bg-white/5 border rounded-lg sm:rounded-xl text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm appearance-none cursor-pointer
                     ${hasError ? "border-red-500 focus:ring-red-500" : "border-white/10"}`}
@@ -115,7 +138,7 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
                   <option value="" className="bg-gray-900 text-gray-400">Select {field.label}</option>
                   {field.options?.map((opt) => (
                     <option key={opt} value={opt} className="bg-gray-900 text-white">
-                      {opt.charAt(0).toUpperCase() + opt.slice(1)}
+                      {opt==="Other"? "Other(Type Manually)" : opt}
                     </option>
                   ))}
                 </select>
@@ -140,10 +163,21 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
               )}
 
 
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-linear-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-focus-within:opacity-100 pointer-events-none transition-opacity -z-10 blur"></div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 
 
-              {/* <input
+
+
+{/* <input
                 id={inputName}
                 name={inputName}
                 type={field.type || "text"}
@@ -161,14 +195,3 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
             </p>
             )} */} 
 
-
-
-              {/* Glow effect */}
-              <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-linear-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 opacity-0 group-focus-within:opacity-100 pointer-events-none transition-opacity -z-10 blur"></div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}

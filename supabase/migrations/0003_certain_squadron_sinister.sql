@@ -1,0 +1,1 @@
+ALTER TABLE "competitions" ADD COLUMN "min_team_size" integer DEFAULT 1 NOT NULL;

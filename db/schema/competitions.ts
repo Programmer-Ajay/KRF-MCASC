@@ -11,6 +11,7 @@ export const competitions =  pgTable('competitions',{
    name:text('name').notNull(),
    type:competitionTypeEnum('type').notNull(),
    maxTeamSize:integer('max_team_size').notNull().default(1),
+   minTeamSize:integer('min_team_size').notNull().default(1),
    rules:text('rules'),
    eventDate: date('event_date').notNull(),
   eventTime: time('event_time').notNull(),

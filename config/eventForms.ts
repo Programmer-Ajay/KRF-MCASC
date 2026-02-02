@@ -2,6 +2,14 @@ export const EVENT_FORMS = {
   seminar: {
     isTeam: false,
     description: "Share your expertise and learn from industry leaders",
+    rules: [
+      // "Reporting Time: 09:30 AM.",
+      "Presentation Time: 10 Mins (8 Minutes for Presentation + 2 minutes for Q&A).",
+      "One Student One Seminar (Groups not allowed).",
+      "Students can use PowerPoint presentation.",
+      "Topics must be selected from the predefined list."
+    ],
+
     fields: [
       {
         name: "topic",
@@ -16,6 +24,12 @@ export const EVENT_FORMS = {
   debate: {
     isTeam: true,
     description: "Engage in intellectual discourse and win exciting prizes",
+    rules: [
+      "Number of Participants: Exactly 4 per team.",
+      "Duration: 10 mins.",
+      "Use of any electronic gadget is prohibited.",
+      // "Debate topic must be selected during registration."
+    ],
     fields: [
       // {
       //   name: "topic",
@@ -43,6 +57,12 @@ export const EVENT_FORMS = {
   programming: {
     isTeam: false,
     description: "Showcase your coding skills and problem-solving abilities",
+    rules: [
+      // "Reporting Time: 10:00 AM.",
+      "Programming Language: C.",
+      "Operating System: Windows / Linux.",
+      "Participants must code in the provided environment."
+    ],
     fields: [
       {
         name: "language",
@@ -58,6 +78,15 @@ export const EVENT_FORMS = {
   shortfilm: {
     isTeam: true,
     description: "Tell your story through the power of cinema",
+    rules: [
+      // "Reporting Time: 09:00 AM.",
+      // "Screening Date: Friday, 21st February, 10:00 AM.",
+      "Participation criteria: Solo entry or Group entry (Maximum 5).",
+      "Duration of the film: Minimum 1 minute to Maximum 10 minutes.",
+      "Subject: Any subject with moral content.",
+      "Type: Live action Fiction, Animation or Documentary.",
+      "Video file format: .MP4."
+    ],
     fields: [
       {
         name: "filmLink",
@@ -87,25 +116,38 @@ export const EVENT_FORMS = {
         ],
         required: true,
       },
-      {
-        name: "synopsis",
-        label: "Brief Synopsis",
-        type: "textarea",
-        placeholder: "Describe your film in 2-3 sentences",
-        required: true,
-      },
+      // {
+      //   name: "synopsis",
+      //   label: "Brief Synopsis",
+      //   type: "textarea",
+      //   placeholder: "Describe your film in 2-3 sentences",
+      //   required: true,
+      // },
     ],
   },
 
   quiz: {
     isTeam: true,
     description: "Test your knowledge and compete with the brightest minds",
+    rules: [
+      // "Reporting Time: 10:00 AM.",
+      // "Date of Quiz: Saturday, 22nd February 2025, 10:30 AM.",
+      "Number of participants: Exactly 4 per Team."
+    ],
     fields: [],
   },
 
   project: {
     isTeam: true,
     description: "Showcase your innovative ideas and technical excellence",
+    rules: [
+      // "Reporting Time: 20th February 2025, 10:30 AM.",
+      "Team Size: Maximum 3.",
+      "Participants should carry their own Laptop with project installed.",
+      "Project must be original (CS Field: AI, Data Science, IoT, etc). No plagiarism.",
+      "Hardware/Software must be ready and tested before presentation.",
+      "Bring your own internet/devices if required."
+    ],
     fields: [
       {
         name: "projectTitle",
@@ -148,6 +190,12 @@ export const EVENT_FORMS = {
   poster: {
     isTeam: false,
     description: "Express yourself in the form of Arts-skill" ,
+    rules: [
+      "Poster size: A3 standard.",
+      "All materials must be brought by participants.",
+      "Theme will be announced on the spot.",
+      "Time limit: 2 hours."
+    ],
     fields: [],
   },
 } as const;

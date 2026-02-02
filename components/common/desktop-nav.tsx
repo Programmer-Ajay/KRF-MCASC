@@ -127,6 +127,7 @@ export default function DesktopNav({ user,role }:Props) {
   </button>
 
   <UserProfilePopup
+
     user={user}
     role={role}
     isOpen={open}
