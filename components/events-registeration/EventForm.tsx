@@ -264,7 +264,7 @@ const getError=(name:string):string[]=>{
               ) :!hasReadRules?(
                 "Please Read Rules First"
               ):!isDeclared?(
-                "please Accept Declaration"
+                "Please Accept Declaration"
               )
               : (
                 "Register Now"

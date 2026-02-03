@@ -97,7 +97,7 @@
                 {/* Date & Location badges like second image */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-6 pointer-events-auto">
                     <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-medium text-white bg-white/10 hover:bg-white/20 transition-colors duration-300">
-                        <Calendar size={18} className="text-cyan-400" /> February 15-16, 2026
+                        <Calendar size={18} className="text-cyan-400" /> February 20-21, 2026
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-medium text-white bg-white/10 hover:bg-white/20 transition-colors duration-300">
                         <MapPin size={18} className="text-pink-500" />  Modern College Campus

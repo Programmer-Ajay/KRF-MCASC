@@ -191,10 +191,11 @@ export default function EventCard({
 
           {/* Title */}
           <h3
-            className="text-lg font-semibold mb-2 text-white"
+            className="text-xl font-semibold mb-2 text-white"
             style={{ transform: "translateZ(20px)" }}
           >
-            {title}
+            {title ? title.charAt(0).toUpperCase() + title.slice(1) : ""
+}
           </h3>
 
           {/* Description */}
