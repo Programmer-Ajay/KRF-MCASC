@@ -141,14 +141,14 @@ export function UserProfilePopup({
             {/* --- USER SECTION (Registrations & Certificates) --- */}
             {isRegularUser && (
                 <div className="space-y-2">
-                    <Link
+                    {/* <Link
                         href="/"
                         onClick={() => { onClose(); setIsLoading(true); }}
                         className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-all group"
                     >
                         <Ticket className="w-4 h-4 text-purple-400 group-hover:text-purple-300" />
                         My Registrations
-                    </Link>
+                    </Link> */}
 
                     {/*  Integrated Component */}
                     <MyCertificatesDialog>

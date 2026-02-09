@@ -139,7 +139,7 @@ const getError=(name:string):string[]=>{
         >
           <h2 className="text-lg sm:text-xl font-semibold text-white mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-linear-to-b from-pink-500 to-purple-500 rounded"></span>
-            Team Leader Details
+            Participant (Team leader) Details
           </h2>
           <CommonFields
            getError={getError} 

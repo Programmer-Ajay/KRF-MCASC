@@ -214,12 +214,12 @@ export default function MobileNav({ user, role }: Props) {
                   // STATE C: REGULAR USER (Student)
                   // STATE C: REGULAR USER (Student)
                   <>
-                    <DrawerLink 
+                    {/* <DrawerLink 
                       href="/" 
                       icon={<Ticket size={18} />} 
                       label="My Registrations" 
                       onClick={() => setOpen(false)} 
-                    />
+                    /> */}
                     
                   
                     <MyCertificatesDialog>

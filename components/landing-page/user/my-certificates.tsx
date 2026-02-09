@@ -28,6 +28,9 @@ export function MyCertificatesDialog({ children }: { children?: React.ReactNode 
   const [loading, setLoading] = useState(false);
   const [certificates, setCertificates] = useState<CertificateItem[]>([]);
 
+  // track which certificate is downlaoding
+  const [downloadingCertId,setDownloadingCertId]=useState<string|null>(null)
+
   const handleOpen = async (isOpen: boolean) => {
     setOpen(isOpen);
     if (isOpen) {
@@ -44,17 +47,61 @@ export function MyCertificatesDialog({ children }: { children?: React.ReactNode 
     }
   };
 
-  const handleDownload = (cert: CertificateItem) => {
+const handleDownload = async (cert: CertificateItem) => {
      if (!cert.certificateId) return;
 
-     const message = cert.isTeamLeader 
-        ? `Generating Team Bundle for ${cert.eventName}...` 
-        : `Downloading certificate for ${cert.eventName}...`;
+     try {
+        // 1. Set loading state for this specific card
+        setDownloadingCertId(cert.certificateId);
         
-     toast.info(message);
+        const message = cert.isTeamLeader 
+          ? `Generating Team Bundle for ${cert.eventName}...` 
+          : `Downloading certificate for ${cert.eventName}...`;
+        toast.info(message);
 
-     // Trigger API Download
-     window.open(`/api/certificates/download?certId=${cert.certificateId}`, '_blank');
+        // 2. Fetch the PDF file in the background
+        const response = await fetch(`/api/certificates/download?certId=${cert.certificateId}`);
+
+        if (!response.ok) {
+            throw new Error("Failed to download");
+        }
+
+        // 3. Convert response to a Blob (Binary file)
+        const blob = await response.blob();
+        
+        // 4. Create a temporary URL for the blob
+        const url = window.URL.createObjectURL(blob);
+        
+        // 5. Create an invisible link and click it to trigger save
+        const a = document.createElement('a');
+        a.href = url;
+        
+        // Try to get filename from header, or fallback to default
+        const contentDisposition = response.headers.get('Content-Disposition');
+        let fileName = `${cert.eventName}-Certificate.pdf`;
+        if (contentDisposition) {
+            const fileNameMatch = contentDisposition.match(/filename="?(.+?)"?$/);
+            if (fileNameMatch && fileNameMatch.length === 2)
+                fileName = fileNameMatch[1];
+        }
+
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        
+        // 6. Cleanup (Free up memory)
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+        
+        toast.success("Download complete!");
+
+     } catch (error) {
+        console.error(error);
+        toast.error("Could not download certificate. Please try again.");
+     } finally {
+        // 7. Reset loading state
+        setDownloadingCertId(null);
+     }
   };
 
   return (
@@ -98,6 +145,7 @@ export function MyCertificatesDialog({ children }: { children?: React.ReactNode 
                   <div className="space-y-3 p-1">
                       {certificates.map((cert) => {
                           const isDownloadable = cert.status === 'eligible' || cert.status === 'team_only';
+                          const isDownloadingThis = downloadingCertId === cert.certificateId;
                           
                           return (
                             <div 
@@ -156,7 +204,12 @@ export function MyCertificatesDialog({ children }: { children?: React.ReactNode 
                                 {/* RIGHT: Download Button */}
                                 {isDownloadable ? (
                                     <div className="h-8 w-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all shadow-lg">
-                                        <Download size={16} />
+                                        {isDownloadingThis ?(
+                                           <LoaderIcon size={16} className="animate-spin text-amber-500 group-hover:text-black" />
+                                        ):(
+                                          <Download size={16} />
+                                        )}
+                                        
                                     </div>
                                 ) : (
                                     <div className="h-8 w-8 flex items-center justify-center text-red-500/30">
@@ -175,3 +228,17 @@ export function MyCertificatesDialog({ children }: { children?: React.ReactNode 
   );
 }
 
+
+
+//   const handleDownload = (cert: CertificateItem) => {
+//      if (!cert.certificateId) return;
+
+//      const message = cert.isTeamLeader 
+//         ? `Generating Team Bundle for ${cert.eventName}...` 
+//         : `Downloading certificate for ${cert.eventName}...`;
+        
+//      toast.info(message);
+
+//      // Trigger API Download
+//      window.open(`/api/certificates/download?certId=${cert.certificateId}`, '_blank');
+//   };
