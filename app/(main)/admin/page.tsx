@@ -5,6 +5,11 @@ import { StatsSection } from "@/components/ad-coo-dashboard/sections/event-stats
 import { Suspense } from "react";
 import { StatsSkeleton } from "@/components/skeletons/dasboard/stats-skeletons";
 import { EventCardSkeleton } from "@/components/skeletons/dasboard/eventCard-skeletons";
+import { Metadata } from "next";
+
+export const metadata:Metadata={
+  title:"Admin Dashboard"
+}
 
 
 const Admin = async () => {

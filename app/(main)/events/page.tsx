@@ -1,5 +1,6 @@
 "use client";
 
+// import { Metadata } from "next";
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { EVENT_FORMS } from "@/config/eventForms";
@@ -9,6 +10,10 @@ import { AlertCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { GlobalLoader } from "@/components/ui/loader";
 
+
+// export const metadata:Metadata={
+//   title:"KRE Events"
+// }
 //  LOGIC COMPONENT (Handles Search Params & UI)
 const EventRegistrationContent = () => {
   const searchParams = useSearchParams();

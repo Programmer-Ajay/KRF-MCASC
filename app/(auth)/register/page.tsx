@@ -1,6 +1,9 @@
-import React from 'react'
 import { SignupForm } from '@/components/signup-form'
+import { Metadata } from 'next'
 
+export const metadata:Metadata={
+  title:"Sign Up",
+}
 const Signup = async () => {
   return (
     <div className="relative min-h-screen bg-black flex items-center justify-center">

@@ -4,7 +4,7 @@ import EventsSection from "@/components/landing-page/Event-section";
 import GallerySection from "@/components/landing-page/gallery/gallery";
   import { getEventList } from "@/server/services/get-competiton-details";
 import { getEventListType } from "@/server/services/get-competiton-details";
-
+import JsonLd from "@/components/seo/jsonLd";
 
 export default  async function Home() {
         let events:getEventListType[]=[];
@@ -20,7 +20,7 @@ export default  async function Home() {
   return (
     <div>
 
-     
+     <JsonLd />
     <HeroSection/>
     <EventsSection events={events}/>
     <GallerySection />

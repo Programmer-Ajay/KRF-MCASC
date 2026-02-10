@@ -1,4 +1,11 @@
 import { LoginForm } from '@/components/login-form'
+import { Metadata } from 'next'
+
+export const metadata:Metadata={
+  title:"Sign In",
+}
+
+
 
 const SignIn = async ({searchParams,}: {searchParams: Promise<{redirect?:string}>}) => {
   const params = await searchParams

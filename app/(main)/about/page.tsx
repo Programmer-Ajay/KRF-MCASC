@@ -1,7 +1,12 @@
-"use client";
-import Image from "next/image";
 
+import { Metadata } from "next";
+import Image from "next/image";
 import { Users, Award, Zap, Heart, Star } from "lucide-react";
+
+export const metadata:Metadata={
+  title:"About"
+}
+
 
 export default function AboutPage() {
   return (
