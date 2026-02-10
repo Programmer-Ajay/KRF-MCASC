@@ -137,7 +137,7 @@ export default function AboutPage() {
         <section className="max-w-6xl mx-auto mb-32">
 
           <p className="text-cyan-400 tracking-[0.3em] uppercase text-sm mb-4">
-            About the Fest
+            About the Event
           </p>
 
           <h2 className="text-5xl font-extrabold mb-8 leading-tight">

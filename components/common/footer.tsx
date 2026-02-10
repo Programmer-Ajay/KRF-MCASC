@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-xl font-semibold text-cyan-400">
-              Kartikeya Rindani Fest
+              Kartikeya Rindani Event
             </h2>
             <p className="mt-4 text-sm leading-relaxed">
               The ultimate celebration of talent, creativity, and innovation.
@@ -140,7 +140,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 text-center text-xs text-gray-500">
-          © 2025 Kartikeya Rindani Fest | Modern College of Arts, Science and
+          © 2025 Kartikeya Rindani Event | Modern College of Arts, Science and
           Commerce (Autonomous), Shivajinagar ,Pune-411005.
         </div>
       </div>

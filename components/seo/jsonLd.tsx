@@ -1,6 +1,8 @@
 export default function JsonLd(){
     const eventScehma={
         "@context":"https://schema.org",
+        "@graph":[
+         {
         "@type": "Event",
         "name": "Kartikeya Rindani Event (KRE) 2026",
         "startDate": "2025-02-18T09:00",
@@ -29,7 +31,19 @@ export default function JsonLd(){
       "name": "MSACS (Modern Student Team codeCrafters Association of Computer Science)",
       "url": "https://kremcasc.in",
     },
+    },
+    {
+        "@type": "Organization",
+        "name": "KRE 2026",
+        "url": "https://kremcasc.in",
+        "logo": "https://kremcasc.in/images/krflogo.png", 
+    
+      }
+
+
+    ]
     }
+    
 
     return (
         <script

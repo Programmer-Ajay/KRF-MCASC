@@ -19,14 +19,17 @@ import { ToastContainer } from "react-toastify";
 export const metadata: Metadata = {
   metadataBase: new URL("https://kremcasc.in"),
   title: {
-    default:"Kartikeya Rindani Event-MCASC | KRE-MCASC",
+    default:"Kartikeya Rindani Event | KRE-MCASC",
     template:"%s | KRE-MCASC",
   },
   description: "Kartikeya Rindani Event (KRE 2026) is an inter-collegiate cultural and technical festival organized by Modern College of Arts, Science & Commerce (Autonomous), Shivajinagar pune-411005. The fest features competitions, Seminar, and performances designed to promote innovation, talent, and student engagement.",
 
   keywords:[
-    "KRE-MCASC",
-    "kre",
+    "KRE MCASC",
+    "kre mcasc",
+    "krf mcasc",
+    "kre 2026",
+    "krf 2026",
     "kremcasc",
     "KRF 2026",
     "KRE 2026",
@@ -51,7 +54,7 @@ export const metadata: Metadata = {
     type:"website",
     locale:"en_IN",
     url:"https://kremcasc.in",
-    title:"KRE 2026 | The Ultimate Tech and Cultural Fest",
+    title:"KRE 2026 | The Ultimate Tech and Cultural Event",
     description: "Register for Quiz, Coding, Debate, and Project competitions. Win exciting prizes!",
     siteName:"KRE 2026",
     images:[

@@ -34,7 +34,7 @@
 
 {/* College Identity */}
 <div className="pointer-events-auto text-center mb-4 mt-6">
-  <p className="text-base sm:text-base font-medium text-white/75 leading-tight mb-1">
+  <p className="text-base sm:text-base font-medium text-white leading-tight mb-1">
     Progressive Education Society&apos;s
   </p>
 
@@ -59,7 +59,7 @@
                 {/* Gradient Fest Name */}
 
                  <h2 className="bg-linear-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide drop-shadow-lg pointer-events-auto">
-                     Kartikeya Rindani Fest
+                     Kartikeya Rindani Intercollegiate Event
                  </h2> 
 
                  {/* Description */}
@@ -97,7 +97,7 @@
                 {/* Date & Location badges like second image */}
                 <div className="flex flex-col sm:flex-row gap-4 mt-6 pointer-events-auto">
                     <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-medium text-white bg-white/10 hover:bg-white/20 transition-colors duration-300">
-                        <Calendar size={18} className="text-cyan-400" /> February 20-21, 2026
+                        <Calendar size={18} className="text-cyan-400" /> February 18-21, 2026
                     </div>
                     <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-medium text-white bg-white/10 hover:bg-white/20 transition-colors duration-300">
                         <MapPin size={18} className="text-pink-500" />  Modern College Campus

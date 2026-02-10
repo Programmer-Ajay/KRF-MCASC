@@ -28,7 +28,7 @@ export default function DesktopNav({ user,role }:Props) {
 
        <Link href="/" className="shrink-0">
             <span className=" font-black bg-linear-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent flex items-center gap-1.5 text-3xl">
-              KRF
+              KRE
               <Sparkles className="w-5 h-5 text-purple-400 animate-pulse" />
             </span>
           </Link>
