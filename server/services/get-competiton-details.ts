@@ -61,7 +61,7 @@ export const getEventList = unstable_cache(
   },
   ["landing-page-events"], // cache key
   {
-    revalidate:86400,  // 24 hour
+    revalidate:3600,  // 1 hour
     tags:["events"]    // tag for manual invalidation
   } 
 )
