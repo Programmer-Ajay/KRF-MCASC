@@ -48,7 +48,8 @@ export const metadata: Metadata = {
   publisher:"PES's Modern College of Arts, Science And Commerce",
   icons:{
     icon:"/favicon.ico",
-    shortcut:'/favicon.ico'
+    shortcut:"/favicon.ico",
+    apple: "/apple-touch-icon.png"
   },
   openGraph:{
     type:"website",
