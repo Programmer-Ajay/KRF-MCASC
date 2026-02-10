@@ -7,7 +7,7 @@ export const commonSchema = z.object({
   email: z.email({ message: "Invalid email address" }),
   collegeName: z.string().min(3, { message: "College name is required" }),
   class: z.string().min(1, { message: "calss/Year is required" }),
-  courseName: z.string().min(3, { message: "Course name is required" }),
+  courseName: z.string().min(2, { message: "Course name is required" }),
   mobileNo: z
     .string()
     .regex(/^[0-9]{10}$/, { message: "Mobile number must be 10 digits" }),

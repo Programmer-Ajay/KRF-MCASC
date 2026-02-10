@@ -3,19 +3,32 @@ export const EVENT_FORMS = {
     isTeam: false,
     description: "Share your expertise and learn from industry leaders",
     rules: [
-      // "Reporting Time: 09:30 AM.",
+      // "Reporting Time: 10:30 AM.",
       "Presentation Time: 10 Mins (8 Minutes for Presentation + 2 minutes for Q&A).",
       "One Student One Seminar (Groups not allowed).",
       "Students can use PowerPoint presentation.",
-      "Topics must be selected from the predefined list."
+      "Topics must be selected from the predefined list.",
+      "College I-Card is compulsory for event",
+      "Judges Decision will be final."
+
     ],
 
     fields: [
       {
         name: "topic",
-        label: "Topic of Interest",
-        type: "text",
-        placeholder: "e.g., Artificial Intelligence, Web Development",
+        label: "Topic for seminar",
+        type: "select",
+        // placeholder: "e.g., Artificial Intelligence, Web Development",
+        options:[
+          "Gig Economy",
+         "Robotics Process Automation (RPA)",
+        "Blockchain Technology",
+        "Cloud / Edge / IoT Computing",
+        "Cyber Security and Cryptography",
+        "Future of Generative AI",
+        "Deep Fake and Identity Security",
+        "Applications of Machine Learning",
+        ],
         required: true,
       },
     ]
@@ -25,10 +38,12 @@ export const EVENT_FORMS = {
     isTeam: true,
     description: "Engage in intellectual discourse and win exciting prizes",
     rules: [
-      "Number of Participants: Exactly 4 per team.",
-      "Duration: 10 mins.",
-      "Use of any electronic gadget is prohibited.",
-      // "Debate topic must be selected during registration."
+     "Each team has  exact four members(Team leader + 3 members).",
+  "Each team gets 10 minutes to present their argument. A warning bell will be given before time ends.",
+  "Each team must present their points clearly. The opposing team must counter the arguments logically. Personal attacks or offensive language are not allowed.",
+  "Teams will be judged on clarity, logic, evidence, and presentation.",
+  "All participants must follow the rules, respect opponents, and maintain discipline.",
+  "Judges will announce the winners based on overall performance."
     ],
     fields: [
       // {
@@ -59,16 +74,18 @@ export const EVENT_FORMS = {
     description: "Showcase your coding skills and problem-solving abilities",
     rules: [
       // "Reporting Time: 10:00 AM.",
-      "Programming Language: C.",
+      "Programming Language: C/Java/Python.",
       "Operating System: Windows / Linux.",
-      "Participants must code in the provided environment."
+      "Participants must code in the provided environment.",
+      "College I-card is complusory for events",
+      "Judge's decision will be final"
     ],
     fields: [
       {
         name: "language",
         label: "Primary Programming Language",
         type: "select",
-        options: ["C"],
+        options: ["C","JAVA","PYTHON"],
         required: true,
       },
    
@@ -130,9 +147,15 @@ export const EVENT_FORMS = {
     isTeam: true,
     description: "Test your knowledge and compete with the brightest minds",
     rules: [
-      // "Reporting Time: 10:00 AM.",
-      // "Date of Quiz: Saturday, 22nd February 2025, 10:30 AM.",
-      "Number of participants: Exactly 4 per Team."
+    //  "Reporting time is 10:30 AM.",
+  "Each team must consist of exactly four students.",
+  "College I-Card is compulsory for the event.",
+  "The coordinators’ decision will be final.",
+  "The quiz will be conducted in multiple rounds.",
+  "Any form of external assistance or unfair practice during the competition will be treated as misconduct and will result in immediate disqualification.",
+  "If the required team members are not present at the time of the event, the organizing committee reserves the right to decide the team’s eligibility or allot a new team entry.",
+  "A time limit will be applied for each round.",
+  "Participants must report at the venue at least 30 minutes before the start time. Latecomers will be disqualified."
     ],
     fields: [],
   },
@@ -141,12 +164,19 @@ export const EVENT_FORMS = {
     isTeam: true,
     description: "Showcase your innovative ideas and technical excellence",
     rules: [
-      // "Reporting Time: 20th February 2025, 10:30 AM.",
-      "Team Size: Maximum 3.",
-      "Participants should carry their own Laptop with project installed.",
-      "Project must be original (CS Field: AI, Data Science, IoT, etc). No plagiarism.",
-      "Hardware/Software must be ready and tested before presentation.",
-      "Bring your own internet/devices if required."
+      "Minimum team size should be 1",
+       "Maximum team size is 3 members(team leader + 2 members).",
+  "Participants must carry their own laptop with the project installed on it.",
+  "The project must be original and developed by the participants.",
+  "The project should demonstrate innovative solutions or applications in the field of Computer Science (e.g., Artificial Intelligence, Data Science, Cybersecurity, IoT, etc.).",
+  "Plagiarism or copied work is strictly prohibited. Any instance will result in disqualification.",
+  "Participants must ensure that their hardware and software are fully functional during the assessment.",
+  "Teams should verify compatibility and system requirements beforehand.",
+  "Software projects must be properly tested on the participant’s device.",
+  "Hardware-based projects must be brought by participants and ensured to be in proper working condition.",
+  "College I-Card is compulsory for the event.",
+  "The judges’ decision will be final."
+
     ],
     fields: [
       {
@@ -191,10 +221,13 @@ export const EVENT_FORMS = {
     isTeam: false,
     description: "Express yourself in the form of Arts-skill" ,
     rules: [
-      "Poster size: A3 standard.",
-      "All materials must be brought by participants.",
-      "Theme will be announced on the spot.",
-      "Time limit: 2 hours."
+      "The poster must be strictly based on education or the computer field and must not contain any offensive, sensitive, or inappropriate content. Violation of this rule will lead to disqualification.",
+  "The poster must be completely hand-drawn by the participant.",
+  "Use of digital tools or mixed media is permitted only for design support.",
+  "Fully or partially printed posters will not be accepted under any circumstances.",
+  "The poster must be submitted by 21st February 2026 before 10:00 AM.",
+  "College I-Card is compulsory for the event.",
+  "The judges’ decision will be final."
     ],
     fields: [],
   },

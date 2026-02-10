@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   classSection: {
     position: 'absolute',
     top: '51.2%',
-    left: '15%',      
+    left: '14%',      
     width: '70%',
     // border:'1px solid red',  for testing     
     textAlign: 'center',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   collegeSection: {
     position: 'absolute',
      top: '57%',
-    left: '7.5%',       
+    left: '7%',       
     width: '90%',     
     textAlign: 'center',
     justifyContent: 'center',
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   eventSection: {
     position: 'absolute',
     top: '63.1%',      
-    left: '24%',
+    left: '20%',
     width: '60%',      
     textAlign: 'center',
     justifyContent: 'center',
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
 });
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-const imageUrl = `${baseUrl}/images/certificate-bg1.jpeg`;
+const imageUrl = `${baseUrl}/images/certificate.jpg`;
 
 export const CertificateDocument = ({ certificates }: { certificates: PdfCertificateData[] }) => (
   <Document>

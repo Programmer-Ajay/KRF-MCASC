@@ -16,9 +16,24 @@ const optionalUrlSchema = z.union([
 
 // --- Event Schemas ---
 
-const seminarDynamicSchema = z.object({
-  topic: createRequiredString("Topic of Interest"),
+export const seminarDynamicSchema = z.object({
+  topic: z.enum(
+    [
+      "Gig Economy",
+      "Robotics Process Automation (RPA)",
+      "Blockchain Technology",
+      "Cloud / Edge / IoT Computing",
+      "Cyber Security and Cryptography",
+      "Future of Generative AI",
+      "Deep Fake and Identity Security",
+      "Applications of Machine Learning",
+    ] as const,
+    {
+      message: "Please select a valid seminar topic",
+    }
+  ),
 });
+
 
 // const debateDynamicSchema = z.object({
 //   topic: z.enum([
@@ -36,7 +51,7 @@ const seminarDynamicSchema = z.object({
 // });
 
 const programmingDynamicSchema = z.object({
-  language: z.enum(["C"] as const, {
+  language: z.enum(["C","JAVA","PYTHON"] as const, {
     message: "Please select a programming language"
   }),
 });
