@@ -19,7 +19,7 @@ export const commonSchema = z.object({
     .or(z.literal("")), // Allows empty string
   
   category: z.enum(["ug", "pg", "junior college"], { 
-  message: "Please select a valid category" // ✅ Correct way
+  message: "Please select a valid category" //  Correct way
 }),
 });
 
@@ -33,7 +33,7 @@ export const teamSchema = z.object({
 
   teamMembers: z
   .array(commonSchema)
-  .max(3, { message: "team size can not more than 4" })
+  
 });
 
 

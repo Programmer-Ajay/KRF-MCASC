@@ -3,7 +3,7 @@ import { COLLEGES } from "@/config/college";
 import { COURSE } from "@/config/course";
 import { useState } from "react";
 import { ClASSYEAR } from "@/config/classYear";
-
+import { memo } from "react";
 type Props={
   namePrefix?:string,
   getError:(fieldName:string)=>string[];
@@ -11,7 +11,7 @@ type Props={
 }
 
 
-export default function CommonFields({namePrefix="",getError,onClearError}:Props) {
+ function CommonFields({namePrefix="",getError,onClearError}:Props) {
 
   // state to track the if user wants to select the college name is manually 
   const [isManualCollege,setIsManualCollege]=useState(false)
@@ -214,7 +214,7 @@ export default function CommonFields({namePrefix="",getError,onClearError}:Props
   );
 }
 
-
+export default memo(CommonFields);
 
 
 

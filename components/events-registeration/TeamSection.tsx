@@ -14,7 +14,8 @@ export default function TeamSection({getError, onClearError}:Props) {
   const [members, setMembers] = useState<TeamMember[]>([]);
 
   const addMember = () => {
-    setMembers([...members, { id: Date.now().toString() }]);
+    const newId = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    setMembers([...members, { id: newId }]);
   };
 
   const removeMember = (id: string) => {

@@ -17,4 +17,5 @@ export const GALLERY_IMAGES = [
   { id: "4", url: "/images/img4.jpeg" },
   { id: "5", url: "/images/img5.jpeg" },
   { id: "6", url: "/images/img6.jpeg" },
+  
 ];

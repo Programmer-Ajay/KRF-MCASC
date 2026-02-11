@@ -43,7 +43,16 @@ export const EVENT_FORMS = {
   "Each team must present their points clearly. The opposing team must counter the arguments logically. Personal attacks or offensive language are not allowed.",
   "Teams will be judged on clarity, logic, evidence, and presentation.",
   "All participants must follow the rules, respect opponents, and maintain discipline.",
-  "Judges will announce the winners based on overall performance."
+  "Judges will announce the winners based on overall performance.",
+  // --- ADDED TOPICS HERE ---
+      "--- DEBATE TOPICS ---",
+      " Are Robots and AI a Threat to Human Jobs?",
+      " Should artificial intelligence be used to combat cybercrime?",
+      " Can Artificial Intelligence Replace Human Intelligence?",
+      " AI Tools (e.g. ChatGPT, Google Gemini, Claude, Notion AI, Grammarly, Canva AI, Zapier, and ElevenLabs)",
+      " Should organ donation become mandatory?",
+      " Can AI truly be creative, or is it just mimicking art?",
+      " Are governments allowed to use AI to analyse citizens’ social media for national security? (Sanchar Bharti)"
     ],
     fields: [
       // {
@@ -74,6 +83,7 @@ export const EVENT_FORMS = {
     description: "Showcase your coding skills and problem-solving abilities",
     rules: [
       // "Reporting Time: 10:00 AM.",
+      "solo Participation is allowed",
       "Programming Language: C/Java/Python.",
       "Operating System: Windows / Linux.",
       "Participants must code in the provided environment.",
@@ -101,8 +111,10 @@ export const EVENT_FORMS = {
       "Participation criteria: Solo entry or Group entry (Maximum 5).",
       "Duration of the film: Minimum 1 minute to Maximum 10 minutes.",
       "Subject: Any subject with moral content.",
+      "Video Resolution 1920 X 1080",
       "Type: Live action Fiction, Animation or Documentary.",
-      "Video file format: .MP4."
+      "Video file format: .MP4.",
+      "Must not contain any offensive,sensitive,or inapprropriate content: violation of this rule wll lead to disqualification",
     ],
     fields: [
       {
@@ -110,7 +122,7 @@ export const EVENT_FORMS = {
         label: "Film Link (YouTube/Vimeo)",
         type: "url",
         placeholder: "https://youtube.com/watch?v=...",
-        required: false,
+        required: true,
       },
       {
         name: "duration",
@@ -151,11 +163,12 @@ export const EVENT_FORMS = {
   "Each team must consist of exactly four students.",
   "College I-Card is compulsory for the event.",
   "The coordinators’ decision will be final.",
-  "The quiz will be conducted in multiple rounds.",
+  "The quiz will be conducted in multiple rounds(e.g audio-visual,rapid fire,MCQ's etc).",
   "Any form of external assistance or unfair practice during the competition will be treated as misconduct and will result in immediate disqualification.",
   "If the required team members are not present at the time of the event, the organizing committee reserves the right to decide the team’s eligibility or allot a new team entry.",
   "A time limit will be applied for each round.",
   "Participants must report at the venue at least 30 minutes before the start time. Latecomers will be disqualified."
+
     ],
     fields: [],
   },
@@ -212,7 +225,7 @@ export const EVENT_FORMS = {
         name: "demoLink",
         label: "Live Demo Link",
         type: "url",
-        placeholder: "https://your-project-demo.com",
+        placeholder: "optional",
         required: false,
       },
     ],
@@ -221,10 +234,12 @@ export const EVENT_FORMS = {
     isTeam: false,
     description: "Express yourself in the form of Arts-skill" ,
     rules: [
-      "The poster must be strictly based on education or the computer field and must not contain any offensive, sensitive, or inappropriate content. Violation of this rule will lead to disqualification.",
+      "Number of Participant should be 1",
+      "The poster must be strictly based on the computer Science field and emerging trends in computer science and must not contain any offensive, sensitive, or inappropriate content. Violation of this rule will lead to disqualification.",
   "The poster must be completely hand-drawn by the participant.",
   "Use of digital tools or mixed media is permitted only for design support.",
   "Fully or partially printed posters will not be accepted under any circumstances.",
+  "Size of the poster paper should A2",
   "The poster must be submitted by 21st February 2026 before 10:00 AM.",
   "College I-Card is compulsory for the event.",
   "The judges’ decision will be final."
