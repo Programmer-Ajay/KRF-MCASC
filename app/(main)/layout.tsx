@@ -101,8 +101,8 @@ export default function RootLayout({
         <Header/>
         {children}
         <ToastContainer />
-        <WhatsAppWidget/>
         <Footer/>
+        <WhatsAppWidget/>
       </body>
     </html>
   );

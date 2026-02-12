@@ -155,7 +155,7 @@ export const EVENT_FORMS = {
     ],
   },
 
-  quiz: {
+  technoQuiz: {
     isTeam: true,
     description: "Test your knowledge and compete with the brightest minds",
     rules: [

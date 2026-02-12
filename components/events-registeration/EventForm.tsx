@@ -87,7 +87,7 @@ const getError=(name:string):string[]=>{
       debate: "🗣️",
       programming: "💻",
       shortfilm: "🎬",
-      quiz: "📚",
+      technoQuiz: "📚",
       project: "🚀",
       poster:"🎨"
     };
@@ -139,8 +139,12 @@ const getError=(name:string):string[]=>{
         >
           <h2 className="text-lg sm:text-xl font-semibold text-white mb-6 flex items-center gap-2">
             <span className="w-1 h-6 bg-linear-to-b from-pink-500 to-purple-500 rounded"></span>
-            Participant (Team leader) Details
+            Participant (Team leader) Details 
           </h2>
+          <span className="text-sm text-red-700">
+ Main Participant :- Login and form email must match. Contact us on WhatsApp if unsure.
+</span>
+
           <CommonFields
            getError={getError} 
            onClearError={(name) =>
@@ -159,7 +163,7 @@ const getError=(name:string):string[]=>{
           >
             <h2 className="text-lg sm:text-xl font-semibold text-white mb-6 flex items-center gap-2">
               <span className="w-1 h-6 bg-linear-to-b from-purple-500 to-blue-500 rounded"></span>
-              Event Details
+               Details
             </h2>
             <div className="space-y-5">
               {config.fields.map((field, index) => (

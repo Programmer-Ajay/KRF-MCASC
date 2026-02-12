@@ -9,7 +9,7 @@ const getColorForType = (type: string) => {
     seminar: "cyan",
     project: "pink",
     debate: "orange",
-    quiz: "purple",
+    technoQuiz: "purple",
     programming: "cyan",
     shortfilm: "purple",
     poster: "orange",
