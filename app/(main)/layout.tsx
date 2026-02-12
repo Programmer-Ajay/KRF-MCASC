@@ -5,7 +5,7 @@ import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
 import { ToastContainer } from "react-toastify";
 
-
+import WhatsAppWidget from "@/components/common/whatsappWidget";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -101,6 +101,7 @@ export default function RootLayout({
         <Header/>
         {children}
         <ToastContainer />
+        <WhatsAppWidget/>
         <Footer/>
       </body>
     </html>

@@ -67,7 +67,7 @@ export default function RegistrationSuccessPage() {
           
           {/* WhatsApp Button */}
           <Link
-            href="https://chat.whatsapp.com/KH6gM0tte9XBQvLcgLPgzs" 
+            href="https://chat.whatsapp.com/KrTBBqRG6hI4UCyEBwEHhs?mode=gi_t" 
             target="_blank"
             className="block w-full group relative overflow-hidden rounded-xl bg-[#25D366] p-1px transition-all hover:bg-[#20bd5a]"
           >
