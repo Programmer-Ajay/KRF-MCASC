@@ -15,7 +15,7 @@ import { unstable_cache } from "next/cache";
 
 export async function getEventListRaw():Promise<getEventListType[]>{
      const data= await db.query.competitions.findMany({
-       orderBy: (competitions, { desc }) => [desc(competitions.createdAt)], 
+       orderBy: (competitions, { asc }) => [asc(competitions.registrationDeadline)], 
        columns:{
         id:true,
         venue:true,
