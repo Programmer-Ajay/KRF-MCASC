@@ -79,7 +79,7 @@ export function SignupForm({ className, ...props }: React.ComponentProps<"div">)
           >
             <h1 className="text-3xl sm:text-4xl font-bold mb-2">
               <span className="bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 bg-clip-text text-transparent">
-                Join KRF&apos;26
+                Join KRE&apos;26
               </span>
             </h1>
             <p className="text-gray-400 text-sm sm:text-base">

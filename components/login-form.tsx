@@ -92,7 +92,7 @@ export function LoginForm({
              Welcome Back
            </span>
          </h1>
-         <p className="text-gray-400 text-sm sm:text-base">Sign in to your KRF account</p>
+         <p className="text-gray-400 text-sm sm:text-base">Sign in to your KRE account</p>
        </motion.div>
 
         <motion.div
