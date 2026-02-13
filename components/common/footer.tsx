@@ -56,13 +56,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-white mb-4">
               College Leadership
             </h3>  {/*Principal and HOD names */}
+            <Link href={"https://linkedin.com/in/nivedita-ekbote-04b00ab"}
+              className="cursor-pointer">
             <p className="text-cyan-400 text-sm font-medium">Principal</p>
             <p className="text-sm mb-3">Prof.Dr.Nivedita G. Ekbote</p>
-
+             </Link>
+             <Link href={"https://linkedin.com/in/shamkant-deshmukh-8a094945"} className="cursor-pointer">
             <p className="text-cyan-400 text-sm font-medium">
               HOD – Computer Science
             </p>
             <p className="text-sm">Prof. Shamkant Deshmukh</p>
+            </Link>
           </div>
 
           {/* Contact */}
@@ -127,13 +131,29 @@ export default function Footer() {
           </p>
 
           <div className="flex justify-center gap-4 flex-wrap">
-            {["Ajay Kumawat", "Shweta Avhad", "Krutika Dhake"].map((dev) => (
+            {
+            [
+              {  id:1,
+                name:"Ajay Kumawat",
+                url:"https://www.linkedin.com/in/ajay-kumawat12",
+            },
+             { id:2,
+              name:"Shweta Avhad",
+              url:"https://www.linkedin.com/in/shweta-avhad-0483ba298"
+             },
+              {  id:3,
+                name:"Krutika Dhake",
+                url:"https://www.linkedin.com/in/krutika-dhake-796809383/"
+             }]
+            .map((dev) => (
+              <Link href={dev.url} key={dev.id}>
               <span
-                key={dev}
-                className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-sm hover:border-cyan-400 hover:text-cyan-400 transition"
+                
+                className="px-5 py-2 rounded-full border border-white/10 bg-white/5 text-sm hover:border-cyan-400 hover:text-cyan-400 transition cursor-pointer"
               >
-                {dev}
+                {dev.name}
               </span>
+              </Link>
             ))}
           </div>
         </div>
