@@ -110,7 +110,8 @@ export default function EventCard({ event ,variant }: EventcardProps) {
         variant==="admin" && (
              
              <Link
-            href={`/admin/events/${event.id}/deadline`}
+            // href={`/admin/events/${event.id}/deadline`}
+            href={`/admin`}
             className="flex-1 text-center px-4 py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-linear-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 transition-all duration-200 hover:shadow-lg hover:shadow-red-500/40 active:scale-95"
           >
             Extend Deadline

@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: { eventId: string } }) 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <Link 
-              href="/coordinator"
+              href="/admin"
               className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/50 hover:text-purple-400 transition-all duration-300 group"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
